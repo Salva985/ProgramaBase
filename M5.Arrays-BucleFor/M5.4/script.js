@@ -17,7 +17,7 @@ function guessNumber() {
             alert("Congratulations, the number is " + randomNumber + " and you needed " + attempts + " attempts to achieve it!")
             return;
         }
-    } while (attempts < maxAttempts);
+    } while (randomNumber != attempts && guess < maxAttempts);
 
     alert("You have used all the attemps 😵‍💫 the number was " + randomNumber);
 }
