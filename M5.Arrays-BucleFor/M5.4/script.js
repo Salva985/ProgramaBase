@@ -6,10 +6,12 @@ function guessNumber() {
     let attempts = 0;
     const maxAttempts = 5;
 
+    console.log("random number: ", randomNumber)
+
     do { 
         guess = parseInt(prompt("Guess the number (between 1 & 10:"));
         attempts++;
-        console.log("random number: ", randomNumber)
+        
 
         if (guess === randomNumber) {
             alert("Congratulations, the number is " + randomNumber + " and you needed " + attempts + " attempts to achieve it!")
