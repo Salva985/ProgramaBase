@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buscar producto</title>
+</head>
+<body>
+  <h1>Buscar producto en el supermercado</h1>
+
+  <label for="producto">Introduce un producto:</label><br>
+  <input type="text" id="producto" placeholder="Ej: sandía"><br><br>
+
+  <button onclick="buscarProducto()">Buscar</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    let supermercado = ["sandia", "helado", "carne", "pescado", "frutos secos"];
+
+    function buscarProducto() {
+      let producto = document.getElementById("producto").value.toLowerCase().trim();
+
+      let encontrado = false;
+
+      for (let i = 0; i < supermercado.length; i++) {
+        if (supermercado[i].toLowerCase() === producto) {
+          encontrado = true;
+          break;
+        }
+      }
+
+      if (encontrado) {
+        document.getElementById("resultado").innerText = " El producto \"" + producto + "\" está en la lista.";
+      } else {
+        document.getElementById("resultado").innerText = " El producto \"" + producto + "\" no está en la lista.";
+      }
+    }
+  </script>
+</body>
+</html>
