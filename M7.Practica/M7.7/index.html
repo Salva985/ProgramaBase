@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square of characters</title>
+</head>
+<body>
+
+    <h2>Square of characters</h2>
+
+    <label for="char">Enter a character: </label>
+    <input type="text" id="char" maxlength="1">
+
+    <label for="size">Enter the size(1-100): </label>
+    <input type="number" id="size" min="1" max="100">
+
+    <button onclick="draw()">Draw</button>
+
+    <p id="error" style="color: red;"></p>
+    <pre id="result"></pre>
+
+    <script>
+
+        function draw(){
+            let char = document.getElementById("char").value;
+            let size = parseInt(document.getElementById("size").value);
+            let result = document.getElementById("result");
+            let error = document.getElementById("error");
+
+            result.innerText = "";
+            error.innerText = "";
+
+            if (!char || char.length !== 1 || isNaN(size) || size <= 0) {
+                error.innerText = "Please enter a single character and a size number greater than 0.";
+                return;
+            }
+
+            let output = "";
+
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    output += char + " ";
+                }
+                output += "\n";
+            }
+            result.textContent = output;
+        }
+    </script>
+    
+</body>
+</html>

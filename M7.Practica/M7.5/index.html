@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displaying Numbers</title>
+</head>
+<body>
+    <button onclick="evenNumbers()">Show even numbers</button>
+
+    <div id="result"></div>
+
+    <script>
+
+        function evenNumbers() {
+            let output = "";
+
+            for (let i = 100;  i >= 0; i --) { //(let i = 100;  i >= 0; i - 2) mas eficiente!!
+                if ( i % 2 === 0) {
+                    output += i + "<br>";
+                }
+            }
+            document.getElementById("result").innerHTML = output;
+        }
+    </script>
+    
+</body>
+</html>
