@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Average Grade Calculator</title>
+</head>
+<body>
+  <label for="gradeCount">How many grades do you want to enter?</label>
+  <input type="number" id="gradeCount" min="1" />
+
+  <button onclick="calculateAverage()">Calculate</button>
+
+  <p id="result"></p>
+
+  <script>
+    function calculateAverage() {
+      let count = parseInt(document.getElementById("gradeCount").value);
+
+      if (isNaN(count) || count <= 0) {
+        document.getElementById("result").innerText = "Please enter a valid number of grades.";
+        return;
+      }
+
+      const grades = getGrades(count);
+      if (grades === null) return; // Invalid input
+
+      let total = 0;
+      for (let i = 0; i < grades.length; i++) {
+        total += grades[i];
+      }
+
+      let average = total / grades.length;
+      let message = getMessage(average);
+
+      document.getElementById("result").innerText =
+        `Average grade: ${average.toFixed(2)}. ${message}`;
+    }
+
+    function getGrades(count) {
+      const grades = [];
+      for (let i = 0; i < count; i++) {
+        let grade = Number(prompt("Enter grade " + (i + 1)));
+
+        if (isNaN(grade) || grade < 0 || grade > 10) {
+          alert("Grade " + (i + 1) + " is invalid. Please enter a value between 0 and 10.");
+          return null;
+        }
+
+        grades.push(grade);
+      }
+      return grades;
+    }
+
+    function getMessage(average) {
+      if (average < 5) {
+        return "You have not passed the course. You need to retake it.";
+      } else if (average <= 7) {
+        return "Congratulations! You passed, but you should keep practicing.";
+      } else {
+        return "Congratulations! You have passed the course! Time to move to the next level!";
+      }
+    }
+  </script>
+</body>
+</html>

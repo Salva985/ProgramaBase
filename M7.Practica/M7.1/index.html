@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Average Grade Calculator</title>
+  </head>
+  <body>
+    <label for="entry1">Enter the 1st grade:</label>
+    <input type="number" id="entry1" />
+
+    <label for="entry2">Enter the 2nd grade:</label>
+    <input type="number" id="entry2" />
+
+    <label for="entry3">Enter the 3rd grade:</label>
+    <input type="number" id="entry3" />
+
+    <button onclick="calculateAverage()">Calculate average</button>
+
+    <p id="result"></p>
+
+    <script>
+      function calculateAverage() {
+        let grade1 = parseFloat(document.getElementById("entry1").value);
+        let grade2 = parseFloat(document.getElementById("entry2").value);
+        let grade3 = parseFloat(document.getElementById("entry3").value);
+
+        if (
+        isNaN(grade1) || grade1 < 0 || grade1 > 10 ||
+        isNaN(grade2) || grade2 < 0 || grade2 > 10 ||
+        isNaN(grade3) || grade3 < 0 || grade3 > 10
+      ) {
+        document.getElementById("result").innerText =
+          "All grades must be numbers between 0 and 10.";
+        return;
+      }
+
+        let average = (grade1 + grade2 + grade3) / 3;
+        let message = "";
+
+        if (average < 5) {
+          message = " You have not passed the course. You need to retake it.";
+        } else if (average >= 5 && average <= 7) {
+          message =
+            "Congratulations! You have passed the course!";
+        } else {
+            message = "Congratulations! You can move to the next level!"
+        }
+        document.getElementById("result").innerText =
+          "Average: " + average.toFixed(2) + ". " + message;
+      }
+    </script>
+  </body>
+</html>
