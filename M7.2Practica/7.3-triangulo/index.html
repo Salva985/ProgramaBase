@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Triángulo Invertido</title>
+</head>
+<body>
+
+  <pre id="output"></pre>
+
+  <script>
+    const lines = parseInt(prompt("Introduce el número de líneas:"));
+    let result = "";
+
+    for (let i = lines; i >= 1; i--) {
+      let row = "";
+      let j = 0;
+      while (j < i) {
+        row += "* ";
+        j++;
+      }
+      result += row.trim() + "\n";
+    }
+
+    document.getElementById("output").textContent = result;
+  </script>
+
+</body>
+</html>

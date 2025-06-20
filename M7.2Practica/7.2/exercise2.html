@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Triangle</title>
+</head>
+<body>
+
+  <pre id="output"></pre>
+
+  <script>
+    let lines = parseInt(prompt("Introduce el número de líneas:"));
+    let result = "";
+
+    for (let i = 1; i <= lines; i++) {
+      let row = "";
+      let j = 0;
+      while (j < i) {
+        row += "* ";
+        j++;
+      }
+      result += row.trim() + "\n";
+    }
+
+    document.getElementById("output").textContent = result;
+  </script>
+
+</body>
+</html>
