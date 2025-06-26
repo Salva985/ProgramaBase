@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fibonacci Finder</title>
+</head>
+<body>
+  <h2>Fibonacci Finder</h2>
+  <p>Find the Fibonacci sequence.</p>
+  <button onclick="startGame()">Start Game</button>
+
+  <script>
+    function isFibonacci(num) {
+      let a = 0, b = 1;
+      while (a < num) {
+        [a, b] = [b, a + b];
+      }
+      return a === num;
+    }
+
+    function startGame() {
+      let input;
+
+      do {
+        input = prompt("Enter a number or Cancel to exit:");
+        if (input === null) {
+          alert("Game ended!");
+          return;
+        }
+
+        const number = parseInt(input);
+
+        if (isNaN(number) || number < 0) {
+          alert("Please enter a valid positive number.");
+        } else if (isFibonacci(number)) {
+          alert("Well done! You found a Fibonacci number.");
+        } else {
+          alert("Try again...");
+        }
+
+      } while (true); // user exits with cancel (already handled above)
+    }
+  </script>
+</body>
+</html>

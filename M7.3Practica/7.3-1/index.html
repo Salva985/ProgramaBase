@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polygon Area Calculator</title>
+</head>
+<body>
+  <h2>Polygon Area Calculator</h2>
+
+  <label for="shape">Choose a shape:</label>
+  <select id="shape" onchange="toggleForms()">
+    <option value="">-- Select --</option>
+    <option value="triangle">Triangle</option>
+    <option value="square">Square</option>
+    <option value="rectangle">Rectangle</option>
+    <option value="circle">Circle</option>
+  </select>
+
+  <!-- Triangle -->
+  <div id="triangle-form" style="display: none">
+    <p>Base: <input type="number" id="triangle-base" /></p>
+    <p>Height: <input type="number" id="triangle-height" /></p>
+    <button onclick="calculateArea('triangle')">Calculate Area</button>
+  </div>
+
+  <!-- Square -->
+  <div id="square-form" style="display: none">
+    <p>Side: <input type="number" id="square-side" /></p>
+    <button onclick="calculateArea('square')">Calculate Area</button>
+  </div>
+
+  <!-- Rectangle -->
+  <div id="rectangle-form" style="display: none">
+    <p>Width: <input type="number" id="rectangle-width" /></p>
+    <p>Height: <input type="number" id="rectangle-height" /></p>
+    <button onclick="calculateArea('rectangle')">Calculate Area</button>
+  </div>
+
+  <!-- Circle -->
+  <div id="circle-form" style="display: none">
+    <p>Radius: <input type="number" id="circle-radius" /></p>
+    <button onclick="calculateArea('circle')">Calculate Area</button>
+  </div>
+
+  <p id="result"></p>
+
+  <script>
+    function toggleForms() {
+      const selected = document.getElementById("shape").value;
+
+      // Hide all forms
+      const forms = ["triangle", "square", "rectangle", "circle"];
+      forms.forEach(shape => {
+        document.getElementById(`${shape}-form`).style.display = "none";
+      });
+
+      // Show the selected form
+      switch (selected) {
+        case "triangle":
+        case "square":
+        case "rectangle":
+        case "circle":
+          document.getElementById(`${selected}-form`).style.display = "block";
+          break;
+        default:
+          break;
+      }
+
+      document.getElementById("result").innerText = "";
+    }
+
+    function calculateArea(shape) {
+      let area;
+
+      switch (shape) {
+        case "triangle":
+          const base = parseFloat(document.getElementById("triangle-base").value);
+          const height = parseFloat(document.getElementById("triangle-height").value);
+          area = 0.5 * base * height;
+          break;
+
+        case "square":
+          const side = parseFloat(document.getElementById("square-side").value);
+          area = side * side;
+          break;
+
+        case "rectangle":
+          const width = parseFloat(document.getElementById("rectangle-width").value);
+          const rectHeight = parseFloat(document.getElementById("rectangle-height").value);
+          area = width * rectHeight;
+          break;
+
+        case "circle":
+          const radius = parseFloat(document.getElementById("circle-radius").value);
+          area = Math.PI * radius * radius;
+          break;
+
+        default:
+          area = null;
+          break;
+      }
+
+      if (isNaN(area)) {
+        document.getElementById("result").innerText = "Please enter valid values.";
+      } else {
+        document.getElementById("result").innerText = `${shape.charAt(0).toUpperCase() + shape.slice(1)} area: ${area.toFixed(2)}`;
+      }
+    }
+  </script>
+</body>
+</html>
