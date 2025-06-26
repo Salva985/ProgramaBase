@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fibonacci Sequence</title>
+</head>
+<body>
+  <h2>Fibonacci Sequence Generator</h2>
+
+  <input type="number" id="count" placeholder="Enter how many numbers">
+  <button onclick="showFibonacci()">Generate</button>
+
+  <p id="result"></p>
+
+  <script>
+    function generateFibonacci(n) {
+      let sequence = [];
+
+      if (n >= 1) sequence.push(0);
+      if (n >= 2) sequence.push(1);
+
+      for (let i = 2; i < n; i++) {
+        sequence.push(sequence[i - 1] + sequence[i - 2]);
+      }
+
+      return sequence;
+    }
+
+    function showFibonacci() {
+      const n = parseInt(document.getElementById("count").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(n) || n <= 0) {
+        result.innerText = "Please enter a positive integer.";
+        return;
+      }
+
+      const fib = generateFibonacci(n);
+      result.innerText = fib.join(", ");
+    }
+  </script>
+</body>
+</html>
