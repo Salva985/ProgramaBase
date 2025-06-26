@@ -7,36 +7,31 @@
 <body>
   <h2>Fibonacci Sequence Generator</h2>
 
-  <input type="number" id="count" placeholder="Enter how many numbers">
-  <button onclick="showFibonacci()">Generate</button>
+  <input type="number" id="number" placeholder="Enter a positive number">
+  <button onclick="generateFibonacci()">Generate</button>
 
   <p id="result"></p>
 
   <script>
-    function generateFibonacci(n) {
-      let sequence = [];
+    function generateFibonacci() {
+      let number = parseInt(document.getElementById("number").value);
 
-      if (n >= 1) sequence.push(0);
-      if (n >= 2) sequence.push(1);
-
-      for (let i = 2; i < n; i++) {
-        sequence.push(sequence[i - 1] + sequence[i - 2]);
-      }
-
-      return sequence;
-    }
-
-    function showFibonacci() {
-      const n = parseInt(document.getElementById("count").value);
-      const result = document.getElementById("result");
-
-      if (isNaN(n) || n <= 0) {
-        result.innerText = "Please enter a positive integer.";
+      if (isNaN(number) || number <= 0) {
+        alert("Please enter a positive number");
         return;
       }
 
-      const fib = generateFibonacci(n);
-      result.innerText = fib.join(", ");
+      const sequence = [];
+
+      for (let i = 0; i < number; i++) {
+        if (i < 2) {
+          sequence.push(i);
+        } else {
+          sequence.push(sequence[i - 1] + sequence[i - 2]);
+        }
+      }
+
+      document.getElementById("result").innerHTML = "<h3>" + sequence.join(", ") + "</h3>";
     }
   </script>
 </body>
