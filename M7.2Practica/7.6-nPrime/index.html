@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prime Number Checker</title>
+</head>
+<body>
+  <h2>Enter numbers until one is prime</h2>
+  <button onclick="main()">Start</button>
+
+  <p id="message"></p>
+
+  <script>
+    function main() {
+      let number;
+      let isPrime = false;
+
+      while (!isPrime) {
+        number = Number(prompt("Enter a number:"));
+
+        if (isNaN(number) || number <= 1) {
+          alert("Please enter a valid number greater than 1.");
+          continue;
+        }
+
+        isPrime = checkPrime(number);
+      }
+
+      const message = document.getElementById("message");
+      message.innerText = `Correct! The number "${number}" is prime.`;
+    }
+
+    function checkPrime(n) {
+      let isPrime = true;
+      let i = 2;
+
+      while (isPrime && i < n) {
+        if (n % i === 0) {
+          isPrime = false;
+        }
+        i++;
+      }
+
+      return isPrime;
+    }
+  </script>
+</body>
+</html>

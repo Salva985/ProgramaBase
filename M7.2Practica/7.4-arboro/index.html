@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrow-tree</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        let max = parseInt(prompt("Enter the max number of characters:"));
+        let result = document.getElementById("result");
+
+        function create(n) {
+            let line = "";
+            for (let i = 0; i < n; i++) {
+                line += "* ";
+            }
+            return line.trim();
+        }
+
+        if (!isNaN(max) && max > 0) {
+            for (let i = 1; i <= max; i++) {
+                result.innerHTML += create(i) + "<br>";
+            }
+            for (let i = max - 1; i >= 1; i--) {
+                result.innerHTML += create(i) + "<br>";
+            }
+        } else {
+            result.innerHTML = "Please enter a valid number.";
+        }
+    </script>
+</body>
+</html>

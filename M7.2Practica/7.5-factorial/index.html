@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Number</title>
+</head>
+<body>
+    <input type="button" onclick="factorial()" value="accept">
+    
+    <div id="result"></div>
+
+    <script>
+        function factorial() {
+            let number = Number(prompt("Introduce un número y se mostrará su factorial"));
+            let result = 1;
+
+            if (isNaN(number) || number < 0) {
+                alert("Introduzca un número positivo");
+                return;
+            }
+
+            for (let i = 2; i <= number; i++) {
+                result *= i;
+            }
+
+            alert(result);
+            document.getElementById("datos").innerText = `El factorial de ${number} es: ${result}`;
+        }
+    </script>
+</body>
+</html>
