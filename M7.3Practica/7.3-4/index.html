@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNI Number</title>
+</head>
+<body>
+    <p>Enter your DNI(e.g. 12345678Z):</p>
+    <input type="text" id="dniInput" placeholder="DNI">
+    <button onclick="checkDNI()">Check</button>
+    <p id="result"></p>
+
+    <script>
+        function checkDNI() {
+            const letters = [
+            "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X",
+            "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"
+            ];
+
+            let input = document.getElementById("dniInput").value.toUpperCase().trim();
+            let result = document.getElementById("result");
+
+            if (!/^\d{8}[A-Z]$/.test(input)) {
+                result.textContent = "Invalid format. Must be 8 digit + 1 Letter.";
+                return;
+            }
+
+            let number = parseInt(input.slice(0, 8));
+            let inputLetter = input.charAt(8);
+            let correctLetter = letters[number % 23];
+
+            if (inputLetter ===correctLetter) {
+                result.textContent = "Correct Letter";
+            } else {
+                result.textContent = `Incorrect. The correct letter is: ${correctLetter}`;
+            }
+        }
+    </script>
+    
+</body>
+</html>
